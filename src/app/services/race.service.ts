@@ -64,4 +64,10 @@ export class RaceService {
       return race.id == id;
     });
   }
+
+  isRaceNameUnique(name: string): boolean{
+    return !this.races.find(race => {
+      return race.name.toLowerCase() == name.toLowerCase();
+    });
+  }
 }

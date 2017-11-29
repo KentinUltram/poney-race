@@ -1,6 +1,7 @@
-<form [formGroup]="race">
+<form [formGroup]="race" (submit)="handleSubmit()">
   <h3>Name</h3>
-  <input type="text" name="name" formControlName="name" />
+  <input type="text" formControlName="name" />
+  {{race.controls.name.hasError('required') ? 'Name is required' : '' }}
   <h3>Ponies</h3>
   <div *ngFor="let poney of raceService.getPonies()">
     <input type="checkbox" [name]="poney.name" />

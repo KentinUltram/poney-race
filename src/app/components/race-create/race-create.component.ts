@@ -13,11 +13,27 @@ export class RaceCreateComponent implements OnInit {
 
   constructor(private raceService: RaceService) {
     this.race = new FormGroup({
-      name: new FormControl()
+      name: new FormControl('',[
+        Validators.required,
+        Validators.minLength(2),
+        (control) => {return this.uniqueNameValidator(control)}
+      ])
     });
-   }
+  }
+
+  uniqueNameValidator(control): any{
+    if(this.raceService.isRaceNameUnique(control.value)){
+      return null
+    } else {
+        return {unique: true};
+    }
+      
+  }
 
   ngOnInit() {
   }
 
+  handleSubmit(){
+    console.log(this.race);
+  }
 }
