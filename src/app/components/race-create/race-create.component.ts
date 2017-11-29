@@ -39,7 +39,9 @@ export class RaceCreateComponent implements OnInit {
       name: this.race.value.name,
       id: this.raceService.races.length +1,
       ponies: [1,2]
+    }).subscribe(res => {
+      console.log(res)
     })
-    console.log(this.race);
+    
   }
 }
