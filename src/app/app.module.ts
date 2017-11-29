@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {RouterModule} from '@angular/router'; 
+import {FormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { PoneyComponent } from './components/poney/poney.component';
@@ -10,6 +11,7 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { RaceService } from './services/race.service';
 import { HomeComponent } from './components/home/home.component';
 import {rootRouterConfig} from './app.routes';
+import { RaceCreateComponent } from './components/race-create/race-create.component';
 
 
 
@@ -20,11 +22,13 @@ import {rootRouterConfig} from './app.routes';
     HighlightDirective,
     RaceComponent,
     CapitalizePipe,
-    HomeComponent
+    HomeComponent,
+    RaceCreateComponent
   ],
   imports: [
     BrowserModule, 
-    RouterModule.forRoot(rootRouterConfig)
+    RouterModule.forRoot(rootRouterConfig),
+    FormsModule 
   ],
   providers: [CapitalizePipe, RaceService],
   bootstrap: [AppComponent]
