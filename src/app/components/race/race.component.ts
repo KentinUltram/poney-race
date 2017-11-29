@@ -29,15 +29,18 @@ export class RaceComponent implements OnInit {
     )
     {
       this.id$ = this.activatedRoute.params.map(params => {
-        return params.id;
+        return parseInt(params.id);
       })
     }
 
   ngOnInit() {
     
     this.id$.subscribe((id) => {
-      console.log("id : "+ id) // verification du bon id reçu
-      this.ponies = this.raceService.getPonies();
+      console.log("id : "+ id, typeof(id)) // verification du bon id reçu
+      //this.ponies = this.raceService.getPonies();
+      //this.startRace();
+      let poneyIds = this.raceService.getRace(id).ponies;
+      this.ponies = this.raceService.getPoniesById(poneyIds);
       this.startRace();
     });
       
@@ -53,6 +56,9 @@ export class RaceComponent implements OnInit {
   }
 
   startRace(){
+    this.ponies.forEach(poney => {
+      poney.distance = 0;
+    })
     this.raceInterval = window.setInterval(() => {
       /*this.ponies.forEach(poney => {
         if (poney.distance >= 90) {
@@ -78,12 +84,19 @@ export class RaceComponent implements OnInit {
 
   }
 
-  stopRace(winner: Poney){
+  stopRace(winner?: Poney){
     clearInterval(this.raceInterval);
-    console.log(`le vainqueur est ${this.capitalize.transform(winner.name)}`);
+    if(winner){console.log(`le vainqueur est ${this.capitalize.transform(winner.name)}`);}
+    
     this.ponies.forEach(poney => {
       poney.distance = 0; 
     });
-
   }
+
+  ngOnDestroy() {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.stopRace();
+  }
+  
 }

@@ -50,6 +50,11 @@ export class RaceService {
     return this.ponies;
   }
 
+  getPoniesById(ids :number[]): Poney[]{
+    return this.ponies.filter(poney => {
+      return ids.includes(poney.id);
+    });
+  }
   getRaces(): Race[]{
     return this.races;
   }
