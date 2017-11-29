@@ -7,4 +7,5 @@ export const rootRouterConfig: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'race/:id', component: RaceComponent},
+  {path: '**', redirectTo: 'home'}
 ];
