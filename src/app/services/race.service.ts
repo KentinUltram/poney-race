@@ -15,6 +15,11 @@ export class RaceService {
         id: 2,
         name: "24h du mans",
         ponies:[1,2,3]
+      },
+      {
+        id: 3,
+        name: "GP de monaco",
+        ponies:[2,3]
       }
 
 
@@ -47,5 +52,11 @@ export class RaceService {
 
   getRaces(): Race[]{
     return this.races;
+  }
+
+  getRace(id: number): Race{
+    return this.races.find(race => {
+      return race.id == id;
+    });
   }
 }

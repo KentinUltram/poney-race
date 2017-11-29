@@ -3,6 +3,9 @@ import { CapitalizePipe } from './../../pipes/capitalize.pipe';
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import Poney from '../../interfaces/poney.interface';
 import Race from '../../interfaces/race.interface';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'pn-race',
@@ -17,14 +20,26 @@ export class RaceComponent implements OnInit {
   ponies: Poney[];
   
   raceInterval: any;
+  // observable to get the id of the course from the activated route
+  id$: Observable<number>;
   constructor(
     private capitalize: CapitalizePipe,
-    private raceService: RaceService
-    ) { }
+    private raceService: RaceService,
+    private activatedRoute: ActivatedRoute
+    )
+    {
+      this.id$ = this.activatedRoute.params.map(params => {
+        return params.id;
+      })
+    }
 
   ngOnInit() {
-    this.ponies = this.raceService.getPonies();
-    this.startRace();
+    
+    this.id$.subscribe((id) => {
+      console.log("id : "+ id) // verification du bon id reçu
+      this.ponies = this.raceService.getPonies();
+      this.startRace();
+    });
       
   }
 
