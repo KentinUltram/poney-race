@@ -1,0 +1,15 @@
+:host{
+    width: 100%;
+    display: inline-block;
+    width: 10%; 
+    text-align: center;
+    position: relative;
+    transition: left 1s linear;
+    left: 0;
+    
+        
+        img{
+            display: inline-block;
+            width: 100%;
+        }   
+}
