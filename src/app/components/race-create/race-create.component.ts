@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RaceService } from '../../services/race.service';
 
 @Component({
   selector: 'pn-race-create',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private raceService: RaceService) { }
 
   ngOnInit() {
   }
