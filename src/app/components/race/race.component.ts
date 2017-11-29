@@ -18,6 +18,7 @@ export class RaceComponent implements OnInit {
   @Output() racing: EventEmitter<string>= new EventEmitter();
 
   ponies: Poney[];
+  ponies$: Observable<Poney[]>;
   
   raceInterval: any;
   // observable to get the id of the course from the activated route
@@ -34,15 +35,17 @@ export class RaceComponent implements OnInit {
     }
 
   ngOnInit() {
-    
-    this.id$.subscribe((id) => {
-      console.log("id : "+ id, typeof(id)) // verification du bon id reçu
-      //this.ponies = this.raceService.getPonies();
-      //this.startRace();
+    this.id$.subscribe(id => {
       let poneyIds = this.raceService.getRace(id).ponies;
-      this.ponies = this.raceService.getPoniesById(poneyIds);
-      this.startRace();
-    });
+
+      this.ponies$ = this.raceService.getPoniesById(poneyIds);
+      
+      this.ponies$.subscribe(ponies => {
+        this.ponies = ponies
+
+        this.startRace();
+      })
+    })
       
   }
 
@@ -57,30 +60,17 @@ export class RaceComponent implements OnInit {
 
   startRace(){
     this.ponies.forEach(poney => {
-      poney.distance = 0;
-    })
-    this.raceInterval = window.setInterval(() => {
-      /*this.ponies.forEach(poney => {
-        if (poney.distance >= 90) {
+      poney.distance = 0
+
+      this.raceInterval = window.setInterval(() => {
+        poney.distance += this.generateDistance(1, 10);
+        
+        if (poney.distance >= 80) {
           this.stopRace(poney);
           return;
         }
-        if (!poney.distance) poney.distance = 0;
-  
-        poney.distance += this.generateDistance(1, 10);
-
-        
-      });*/
-      for (let poney of this.ponies){
-        if (poney.distance >= 90) {
-          this.stopRace(poney);
-          break;
-        }
-        if (!poney.distance) poney.distance = 0;
-  
-        poney.distance += this.generateDistance(1, 10);
-      }
-    }, 1000);
+      }, 1000);
+    })
 
   }
 

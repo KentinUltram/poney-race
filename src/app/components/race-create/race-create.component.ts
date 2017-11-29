@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RaceService } from '../../services/race.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'pn-race-create',
@@ -11,7 +12,7 @@ export class RaceCreateComponent implements OnInit {
 
   race: FormGroup
 
-  constructor(private raceService: RaceService) {
+  constructor(private raceService: RaceService, private http: Http) {
     this.race = new FormGroup({
       name: new FormControl('',[
         Validators.required,
@@ -34,6 +35,11 @@ export class RaceCreateComponent implements OnInit {
   }
 
   handleSubmit(){
+    this.http.post('http://localhost:3000/races', {
+      name: this.race.value.name,
+      id: this.raceService.races.length +1,
+      ponies: [1,2]
+    })
     console.log(this.race);
   }
 }

@@ -12,6 +12,7 @@ import { RaceService } from './services/race.service';
 import { HomeComponent } from './components/home/home.component';
 import {rootRouterConfig} from './app.routes';
 import { RaceCreateComponent } from './components/race-create/race-create.component';
+import { HttpModule } from "@angular/http";
 
 
 
@@ -29,7 +30,8 @@ import { RaceCreateComponent } from './components/race-create/race-create.compon
     BrowserModule, 
     RouterModule.forRoot(rootRouterConfig),
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [CapitalizePipe, RaceService],
   bootstrap: [AppComponent]

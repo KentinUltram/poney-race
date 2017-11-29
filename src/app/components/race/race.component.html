@@ -1,5 +1,5 @@
 <div  
-*ngFor="let poney of ponies; let i = index" 
+*ngFor="let poney of ponies$ | async; let i = index" 
 [pnHighlight]="i % 2 ? 'white' : '#f5f5f5'"
 hoverColor="#eee"
 class="line-container"

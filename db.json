@@ -1,29 +1,29 @@
 {
     "ponies": [
         {
-          "id": 1,
-         "name": "jackjack",
-         "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif",
-          "distance": 0
+        "id": 1,
+        "name": "jackjack",
+        "img": "http://ponyracer.ninja-squad.com/assets/images/pony-orange-running.gif",
+        "distance": 0
         },
         {
-          "id": 2,
-          "name": "jeanne",
-          "img": "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif",
-          "distance": 0
+        "id": 2,
+        "name": "jeanne",
+        "img": "http://ponyracer.ninja-squad.com/assets/images/pony-purple-running.gif",
+        "distance": 0
         },
         {
-          "id": 3,
-          "name": "serge",
-          "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif",
-          "distance": 0
+        "id": 3,
+        "name": "serge",
+        "img": "http://ponyracer.ninja-squad.com/assets/images/pony-green-running.gif",
+        "distance": 0
         }
-      ],
+    ],
     "races": [
         {
-          "id": 1,
-          "name": "monte-carlo",
-          "ponies":[1,2]
+        "id": 1,
+        "name": "monte-carlo",
+        "ponies":[1,2]
         },
         {
           "id": 2,
