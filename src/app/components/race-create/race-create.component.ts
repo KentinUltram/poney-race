@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RaceService } from '../../services/race.service';
+import {FormGroup, FormControl, Validators} from '@angular/forms'
 
 @Component({
   selector: 'pn-race-create',
@@ -8,7 +9,13 @@ import { RaceService } from '../../services/race.service';
 })
 export class RaceCreateComponent implements OnInit {
 
-  constructor(private raceService: RaceService) { }
+  race: FormGroup
+
+  constructor(private raceService: RaceService) {
+    this.race = new FormGroup({
+      name: new FormControl()
+    });
+   }
 
   ngOnInit() {
   }

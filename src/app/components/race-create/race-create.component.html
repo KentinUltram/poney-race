@@ -1,6 +1,6 @@
-<form>
+<form [formGroup]="race">
   <h3>Name</h3>
-  <input type="text" name="name" />
+  <input type="text" name="name" formControlName="name" />
   <h3>Ponies</h3>
   <div *ngFor="let poney of raceService.getPonies()">
     <input type="checkbox" [name]="poney.name" />

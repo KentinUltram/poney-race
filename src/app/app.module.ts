@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router'; 
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { PoneyComponent } from './components/poney/poney.component';
@@ -28,7 +28,8 @@ import { RaceCreateComponent } from './components/race-create/race-create.compon
   imports: [
     BrowserModule, 
     RouterModule.forRoot(rootRouterConfig),
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [CapitalizePipe, RaceService],
   bootstrap: [AppComponent]
