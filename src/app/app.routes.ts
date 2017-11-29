@@ -6,5 +6,5 @@ import { HomeComponent } from './components/home/home.component';
 export const rootRouterConfig: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'race', component: RaceComponent},
+  {path: 'race/:id', component: RaceComponent},
 ];
