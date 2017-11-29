@@ -9,5 +9,5 @@
       {{poney.name |capitalize}}
     </label>
   </div>
-  <button type="submit">Create</button>
+  <button [disabled]="race.invalid" type="submit">Create</button>
 </form>
